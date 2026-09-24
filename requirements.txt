@@ -1,0 +1,5 @@
+flask
+docling
+ollama
+markdown
+xhtml2pdf

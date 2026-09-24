@@ -1,0 +1,25 @@
+## A Alegria de Viajar Sozinho
+
+Viagens em grupo são ótimas, mas às vezes, nada é melhor do que estar em um novo lugar sozinho.
+
+Viajar não é a mesma coisa para todos. Nunca somos a mesma pessoa duas vezes em um dia, então, como poderíamos ter os mesmos gostos que os outros? Eu gosto de Roma, minha esposa gosta de Londres, amigos de Los Angeles com quem gostamos de viajar preferem Paris. Eles gostam de reservar ingressos para museus, gostam de reservar mesas em restaurantes, enquanto eu sempre evitei roteiros programados de qualquer tipo. O que compartilhamos, no entanto, é o desejo de algo que só a viagem pode oferecer e que acontece quando estamos em outro lugar, com uma perspectiva diferente. O que exatamente é isso é algo que raramente revelamos aos outros, porque não estamos realmente certos de que conseguimos compreendê-lo. Talvez seja por isso que viajamos, embora dêmos muitos nomes a isso.
+
+Para mim, isso se tornou claro em um dia em Orvieto, perto de Roma. Minha esposa está dormindo tarde. Ela gosta de fazer isso quando viajamos. Eu não. Eu gosto de acordar antes de qualquer outra pessoa.
+
+<!-- imagem -->
+
+e passear pelas ruas estreitas de paralelepípedos da qualquer pequena cidade que estejamos visitando. Eu gosto de improvisar minha caminhada e ouvir as pessoas cumprimentando umas às outras pela manhã. Eu gosto de suas saudações, do padeiro ao farmacêutico ao vendedor de jornais. E eu não me importo em me perder.
+
+Naquela manhã, propus encontrar um de meus amigos cedo em um café localizado à esquerda da catedral.
+
+Ele chega atrasado, então, enquanto espero, peço um cornetto e um café latte. Quase todas as outras mesas estão ocupadas e um homem, sentado à sombra de uma pequena cerca que cerca o café, está lendo o jornal em silêncio, algo que eu suspeito que ele esteja fazendo todas as manhãs há anos. Ocasionalmente, posso ouvir o papel farfalhando quando ele vira uma página, ou quando a brisa mais fraca sopra através dele. Caso contrário, não há nenhuma mudança nesta placidez, este espaço ensolarado.
+
+Este é o momento silencioso, e ele existe em todas as pequenas cidades da Itália. Todos o respeitam. Sem celulares, sem cachorros, sem bebês e sem turistas. Todos estes aparecerão, mas não ainda. É sábado, e as pessoas de Orvieto não têm pressa desta manhã. O carpinteiro que parece ser um descendente direto dos membros da guilda medieval está do lado de fora de sua loja com um cigarro aceso, que ele claramente não quer apagar e que lhe dá a atmosfera pensativa e meditativa de um Einstein italiano ainda trabalhando na teoria da relatividade.
+
+Eu adoro o silêncio deslumbrante da manhã aqui. Um homem idoso passa, acena em minha direção com respeito. Eu aceno de volta, sem dizer nada. Alguém está varrendo o lixo na calçada. Mal consigo ouvir a escova dele, mas sinto falta quando ele se afasta para outro lugar na praça. Silêncio.
+
+Enquanto espero, ouço o som distante de uma colher em uma travessa, e, é claro, o garçom aparece com meu cornetto e meu café latte e o copo de água necessário. Mal posso esperar para comer o cornetto e, imediatamente, antes que ele tenha a chance de sumir atrás da cortina de contas, peço que me traga outro. Se meu amigo chegar, eu direi que o encomendei para ele; se ela não chegar, eu o comerei. Talvez seja por isso que começo a esperar que ela não chegue. Não me importo em esperar e aceito mais cinco ou 10 minutos sem ninguém.
+
+Estar sozinho é uma desculpa para não fazer nada, e não fazer nada, como me entregar à manhã de Orvieto, é exatamente o que eu procuro quando não estou mais preso à minha vida cotidiana caótica em Nova York. As pessoas pensam que viajar é sobre ver coisas novas. Não para mim. Estou aqui por algo que tem quase nada a ver com vistas, monumentos, museus, restaurantes, natureza ou até mesmo pessoas e seus costumes. Eu quero esquecer o tempo. Eu não gosto do tempo. Quando o tempo já foi meu amigo? Eu não quero nem que Orvieto me dê algo novo. O que eu quero, talvez, seja receber algo em troca, algo intangível que acredito que eu já tinha, mas perdi o controle e mal consigo me lembrar. Isso, eu me lembrarei, é onde eu esperei por um amigo e, de repente, consegui vislumbrar o grande paradoxo que define minha vida: que eu sempre temi a solidão, mas amo estar sozinho. É por isso que gosto de esperar por meu amigo e não me importo se ela chega tarde.
+
+Eu sei que ficarei muito feliz em vê-la novamente, e sei que vamos rir como sempre fazemos. Em algum momento ela vai perguntar o que há de novo e eu finalmente direi a ela que, ao tomar café da manhã e esperar por ela, percebi que viajei milhares de quilômetros para me banhar sob a rara magia daquele único e especial coisa em nossas vidas: plenitude. Eu me senti mais rico naquela manhã do que me sentia em muito tempo. Então, por que partir? Que razão, então? Ninguém de nós quer responder a essa pergunta. Mas sabemos a resposta: Parte de nós quer ficar aqui e nunca voltar. A outra parte, Deus nos livre, se recusa a pensar nisso.

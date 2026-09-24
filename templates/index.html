@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Enterprise Tools</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            var(--cds-primary): #0f62fe;
+            --cds-primary: #0f62fe;
+            --cds-primary-hover: #0043ce;
+            --cds-background: #f4f4f4;
+            --cds-surface: #ffffff;
+            --cds-text-primary: #161616;
+            --cds-text-secondary: #525252;
+            --cds-border: #c6c6c6;
+            --cds-border-subtle: #e0e0e0;
+            --cds-error: #da1e28;
+            --spacing-base: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            background-color: var(--cds-background);
+            color: var(--cds-text-primary);
+            margin: 0;
+            padding: calc(var(--spacing-base) * 4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100dvh;
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 1400px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: calc(var(--spacing-base) * 4);
+        }
+
+        @media(min-width: 900px) {
+            .main-wrapper {
+                grid-template-columns: 1fr 1fr;
+                aspect-ratio: 2 / 1;
+                max-height: 85vh;
+            }
+        }
+
+        .container {
+            background-color: var(--cds-surface);
+            padding: calc(var(--spacing-base) * 4);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid var(--cds-border);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        
+        .preview-container {
+            background-color: var(--cds-surface);
+            border: 1px solid var(--cds-border);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .preview-header {
+            padding: calc(var(--spacing-base) * 2);
+            border-bottom: 1px solid var(--cds-border);
+            background-color: var(--cds-background);
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        
+        .preview-content {
+            padding: calc(var(--spacing-base) * 3);
+            overflow-y: auto;
+            flex-grow: 1;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            color: var(--cds-text-secondary);
+        }
+
+        /* TABS */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--cds-border-subtle);
+            margin-bottom: calc(var(--spacing-base) * 4);
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: calc(var(--spacing-base) * 2) calc(var(--spacing-base) * 3);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            color: var(--cds-text-secondary);
+            border-bottom: 2px solid transparent;
+            transition: all 200ms ease-out;
+        }
+
+        .tab-btn.active {
+            color: var(--cds-primary);
+            border-bottom: 2px solid var(--cds-primary);
+            font-weight: 500;
+        }
+
+        .tab-btn:hover:not(.active) {
+            color: var(--cds-text-primary);
+            background-color: var(--cds-background);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 300ms ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h1 {
+            font-weight: 300;
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: calc(var(--spacing-base) * 1);
+            color: var(--cds-text-primary);
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            font-size: 0.875rem;
+            color: var(--cds-text-secondary);
+            margin-bottom: calc(var(--spacing-base) * 4);
+        }
+
+        .form-group {
+            margin-bottom: calc(var(--spacing-base) * 3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: var(--spacing-base);
+            letter-spacing: 0.16px;
+            color: var(--cds-text-secondary);
+        }
+
+        input[type="file"], select {
+            font-family: 'IBM Plex Sans', sans-serif;
+            padding: calc(var(--spacing-base) * 1.5) calc(var(--spacing-base) * 2);
+            background-color: var(--cds-background);
+            border: none;
+            border-bottom: 1px solid var(--cds-text-primary);
+            border-radius: 0;
+            font-size: 1rem;
+            color: var(--cds-text-primary);
+            outline: none;
+            cursor: pointer;
+        }
+
+        input[type="file"]:focus, select:focus {
+            outline: 2px solid var(--cds-primary);
+            outline-offset: -2px;
+        }
+
+        .btn-primary {
+            background-color: var(--cds-primary);
+            color: #ffffff;
+            border: none;
+            padding: calc(var(--spacing-base) * 2) calc(var(--spacing-base) * 3);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 0;
+            width: 100%;
+            transition: all 200ms ease-out;
+            margin-top: calc(var(--spacing-base) * 2);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--cds-primary-hover);
+        }
+
+        .btn-primary:active {
+            transform: translateY(1px);
+        }
+        
+        .btn-primary:disabled {
+            background-color: var(--cds-border);
+            color: var(--cds-text-secondary);
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .status-message {
+            margin-top: calc(var(--spacing-base) * 2);
+            font-size: 0.875rem;
+            color: var(--cds-text-secondary);
+            display: none;
+        }
+
+        .skeleton-bar {
+            height: 4px;
+            width: 100%;
+            background-color: var(--cds-background);
+            overflow: hidden;
+            position: relative;
+            margin-top: calc(var(--spacing-base) * 1);
+            display: none;
+        }
+
+        .skeleton-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            height: 100%;
+            width: 50%;
+            background: linear-gradient(90deg, transparent, var(--cds-primary), transparent);
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            100% { left: 200%; }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .result-container {
+            margin-top: calc(var(--spacing-base) * 4);
+            padding-top: calc(var(--spacing-base) * 3);
+            border-top: 1px solid var(--cds-border);
+            display: none;
+        }
+
+        .mono-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            background: var(--cds-background);
+            padding: 2px 6px;
+            color: var(--cds-text-secondary);
+        }
+
+        .download-link {
+            display: inline-block;
+            margin-top: calc(var(--spacing-base) * 2);
+            margin-right: calc(var(--spacing-base) * 2);
+            color: var(--cds-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .download-link:hover {
+            color: var(--cds-primary-hover);
+            text-decoration: underline;
+        }
+
+        .error-msg {
+            color: var(--cds-error);
+            font-size: 0.875rem;
+            margin-top: calc(var(--spacing-base) * 1);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <div class="container">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab('translator-tab', this)">Translator</button>
+                <button class="tab-btn" onclick="openTab('extractor-tab', this)">Extractor</button>
+            </div>
+
+            <!-- TRANSLATOR TAB -->
+            <div id="translator-tab" class="tab-content active">
+                <h1>Carbon Translator</h1>
+                <p class="subtitle">Tradução via IA (Ollama)</p>
+                
+                <form id="translate-form">
+                    <div class="form-group">
+                        <label for="t-file">Documento de Origem</label>
+                        <input type="file" id="t-file" accept=".pdf,.docx,.jpg,.jpeg,.png,.txt" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="t-language">Idioma de Destino</label>
+                        <select id="t-language">
+                            <option value="Português">Português</option>
+                            <option value="English">English</option>
+                            <option value="Español">Español</option>
+                            <option value="Deutsch">Deutsch</option>
+                            <option value="Français">Français</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="t-model">Modelo de Tradução</label>
+                        <select id="t-model">
+                            <option value="translategemma:4b">translategemma:4b (Rápido)</option>
+                            <option value="translategemma:12b">translategemma:12b (Preciso)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="t-submit">Iniciar Tradução</button>
+                    
+                    <div class="status-message" id="t-status">Processando...</div>
+                    <div class="skeleton-bar" id="t-skeleton"></div>
+                </form>
+
+                <div class="result-container" id="t-result">
+                    <h3 style="font-size: 1.25rem; font-weight: 400; margin: 0 0 16px 0;">Tradução Concluída</h3>
+                    <p style="font-size: 0.875rem;">Pasta: <span class="mono-text" id="t-folder"></span></p>
+                    <div>
+                        <a href="#" id="t-link-md" class="download-link">Baixar Markdown</a>
+                        <a href="#" id="t-link-pdf" class="download-link">Baixar PDF</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- EXTRACTOR TAB -->
+            <div id="extractor-tab" class="tab-content">
+                <h1>Carbon Extractor</h1>
+                <p class="subtitle">Extração pura de layout e texto via Docling</p>
+                
+                <form id="extract-form">
+                    <div class="form-group">
+                        <label for="e-file">Documento de Origem</label>
+                        <input type="file" id="e-file" accept=".pdf,.docx,.jpg,.jpeg,.png,.txt" required>
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="e-submit">Extrair Conteúdo</button>
+                    
+                    <div class="status-message" id="e-status">Analisando documento e rodando modelos de visão...</div>
+                    <div class="skeleton-bar" id="e-skeleton"></div>
+                </form>
+
+                <div class="result-container" id="e-result">
+                    <h3 style="font-size: 1.25rem; font-weight: 400; margin: 0 0 16px 0;">Extração Concluída</h3>
+                    <p style="font-size: 0.875rem;">Pasta: <span class="mono-text" id="e-folder"></span></p>
+                    <a href="#" id="e-link-md" class="download-link">Baixar Markdown</a>
+                </div>
+            </div>
+
+            <p id="geral-error" class="error-msg"></p>
+        </div>
+        
+        <!-- SIDE BY SIDE PREVIEW -->
+        <div class="preview-container">
+            <div class="preview-header">Live Preview (Markdown)</div>
+            <div class="preview-content" id="live-preview">O resultado aparecerá aqui em tempo real...</div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(tabId, btn) {
+            document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(tb => tb.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        const previewBox = document.getElementById('live-preview');
+        const geralError = document.getElementById('geral-error');
+
+        // EXTRACTOR LOGIC
+        document.getElementById('extract-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const fileInput = document.getElementById('e-file');
+            if (!fileInput.files.length) return;
+
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+
+            const submitBtn = document.getElementById('e-submit');
+            submitBtn.disabled = true;
+            document.getElementById('e-status').style.display = 'block';
+            document.getElementById('e-skeleton').style.display = 'block';
+            document.getElementById('e-result').style.display = 'none';
+            geralError.style.display = 'none';
+            previewBox.innerText = 'Extraindo texto...';
+
+            try {
+                const response = await fetch('/api/extract', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+                
+                if (response.ok && data.success) {
+                    document.getElementById('e-folder').innerText = data.output_folder;
+                    const linkMd = document.getElementById('e-link-md');
+                    linkMd.href = `/download/${data.output_folder}/${data.md_file}`;
+                    
+                    previewBox.innerText = data.preview_text;
+                    document.getElementById('e-result').style.display = 'block';
+                } else {
+                    geralError.innerText = 'Erro: ' + (data.error || 'Falha.');
+                    geralError.style.display = 'block';
+                }
+            } catch (error) {
+                geralError.innerText = 'Erro de conexão.';
+                geralError.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
+                document.getElementById('e-status').style.display = 'none';
+                document.getElementById('e-skeleton').style.display = 'none';
+            }
+        });
+
+        // TRANSLATOR STREAMING LOGIC
+        document.getElementById('translate-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const fileInput = document.getElementById('t-file');
+            if (!fileInput.files.length) return;
+
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+            formData.append('language', document.getElementById('t-language').value);
+            formData.append('model', document.getElementById('t-model').value);
+
+            const submitBtn = document.getElementById('t-submit');
+            const statusMsg = document.getElementById('t-status');
+            
+            submitBtn.disabled = true;
+            statusMsg.style.display = 'block';
+            statusMsg.innerText = 'Iniciando...';
+            document.getElementById('t-skeleton').style.display = 'block';
+            document.getElementById('t-result').style.display = 'none';
+            geralError.style.display = 'none';
+            previewBox.innerText = ''; // Clear preview
+
+            try {
+                const response = await fetch('/api/translate_stream', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error("Erro na resposta do servidor");
+                }
+
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder();
+                let buffer = '';
+
+                while (true) {
+                    const { value, done } = await reader.read();
+                    if (done) break;
+                    
+                    buffer += decoder.decode(value, {stream: true});
+                    
+                    // Parse ndjson
+                    const lines = buffer.split('\n');
+                    buffer = lines.pop(); // keep incomplete line in buffer
+                    
+                    for (let line of lines) {
+                        if (!line.trim()) continue;
+                        const data = JSON.parse(line);
+                        
+                        if (data.status === 'info') {
+                            statusMsg.innerText = data.message;
+                        } else if (data.status === 'chunk') {
+                            previewBox.innerText += data.text;
+                            previewBox.scrollTop = previewBox.scrollHeight;
+                        } else if (data.status === 'error') {
+                            throw new Error(data.message);
+                        } else if (data.status === 'done') {
+                            document.getElementById('t-folder').innerText = data.output_folder;
+                            
+                            const linkMd = document.getElementById('t-link-md');
+                            linkMd.href = `/download/${data.output_folder}/${data.md_file}`;
+                            
+                            const linkPdf = document.getElementById('t-link-pdf');
+                            if (data.pdf_file) {
+                                linkPdf.href = `/download/${data.output_folder}/${data.pdf_file}`;
+                                linkPdf.style.display = 'inline-block';
+                            } else {
+                                linkPdf.style.display = 'none';
+                            }
+                            
+                            document.getElementById('t-result').style.display = 'block';
+                            statusMsg.innerText = 'Finalizado com sucesso!';
+                        }
+                    }
+                }
+            } catch (error) {
+                geralError.innerText = 'Erro: ' + error.message;
+                geralError.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
+                document.getElementById('t-skeleton').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
